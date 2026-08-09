@@ -30,7 +30,7 @@ assumptions, and provenance records.
 ## Install
 
 ```sh
-npm install https://github.com/mihirkavi/open-nutrition-transaction/archive/refs/tags/v0.1.1.tar.gz
+npm install https://github.com/mihirkavi/open-nutrition-transaction/archive/refs/tags/v0.1.2.tar.gz
 ```
 
 ```ts

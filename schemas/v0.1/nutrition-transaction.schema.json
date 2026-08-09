@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/mihirkavi/open-nutrition-transaction/blob/v0.1.1/schemas/v0.1/nutrition-transaction.schema.json",
+  "$id": "https://github.com/mihirkavi/open-nutrition-transaction/blob/v0.1.2/schemas/v0.1/nutrition-transaction.schema.json",
   "title": "Open Nutrition Transaction 0.1",
   "type": "object",
   "additionalProperties": false,
