@@ -1,0 +1,24 @@
+openapi: 3.1.0
+info:
+  title: Open Nutrition Transaction
+  version: 0.1.0
+  description: Vendor-neutral contract for provenance-aware nutrition attached to food purchases.
+  license:
+    name: Apache-2.0
+    identifier: Apache-2.0
+paths:
+  /nutrition-transactions:
+    post:
+      summary: Accept a nutrition transaction
+      operationId: acceptNutritionTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/v0.1/nutrition-transaction.schema.json
+      responses:
+        "202":
+          description: Transaction accepted
+        "400":
+          description: Invalid transaction

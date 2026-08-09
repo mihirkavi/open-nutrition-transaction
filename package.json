@@ -1,0 +1,50 @@
+{
+  "name": "open-nutrition-transaction",
+  "version": "0.1.0",
+  "description": "A small, vendor-neutral JSON contract for provenance-aware nutrition attached to food purchases.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Mihir Kavishwar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihirkavi/open-nutrition-transaction.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mihirkavi/open-nutrition-transaction/issues"
+  },
+  "homepage": "https://github.com/mihirkavi/open-nutrition-transaction#readme",
+  "keywords": [
+    "food",
+    "nutrition",
+    "open-standard",
+    "provenance",
+    "receipt",
+    "transaction"
+  ],
+  "files": [
+    "dist",
+    "schemas",
+    "openapi",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schema/v0.1": "./schemas/v0.1/nutrition-transaction.schema.json"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.js",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
