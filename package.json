@@ -1,6 +1,6 @@
 {
   "name": "open-nutrition-transaction",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A small, vendor-neutral JSON contract for provenance-aware nutrition attached to food purchases.",
   "type": "module",
   "license": "Apache-2.0",

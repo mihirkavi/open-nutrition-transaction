@@ -94,11 +94,16 @@ export function validateNutritionTransaction(value: unknown): ValidationResult {
     errors.push(`nutrition_transaction_version must be ${OPEN_NUTRITION_TRANSACTION_VERSION}`);
   }
   requiredString(value.transaction_id, "transaction_id", errors);
-  requiredString(value.currency, "currency", errors);
+  if (typeof value.currency !== "string" || !/^[A-Z]{3}$/.test(value.currency)) {
+    errors.push("currency must be a three-letter uppercase code");
+  }
   if (!isRecord(value.merchant)) errors.push("merchant must be an object");
   else requiredString(value.merchant.name, "merchant.name", errors);
   if (!CONSUMPTION_STATUSES.has(value.consumption_status)) {
     errors.push("consumption_status is invalid");
+  }
+  if (value.purchased_at !== undefined && !validDateTime(value.purchased_at)) {
+    errors.push("purchased_at must be an ISO 8601 date-time");
   }
   if (!Array.isArray(value.items) || value.items.length === 0) {
     errors.push("items must contain at least one item");
@@ -106,6 +111,9 @@ export function validateNutritionTransaction(value: unknown): ValidationResult {
     value.items.forEach((item, index) => validateItem(item, index, errors));
   }
   validateNutrients(value.nutrition_total, "nutrition_total", errors);
+  if (value.nutrition_total_range !== undefined) {
+    validateRanges(value.nutrition_total_range, "nutrition_total_range", errors);
+  }
   return errors.length === 0
     ? { valid: true, value: value as NutritionTransaction & Record<string, unknown> }
     : { valid: false, errors };
@@ -136,6 +144,15 @@ function validateItem(value: unknown, index: number, errors: string[]): void {
   if (!unitInterval(value.confidence)) errors.push(`${path}.confidence must be between 0 and 1`);
   if (!NUTRITION_STATUSES.has(value.nutrition_status)) errors.push(`${path}.nutrition_status is invalid`);
   validateNutrients(value.nutrition, `${path}.nutrition`, errors);
+  if (value.nutrition_range !== undefined) validateRanges(value.nutrition_range, `${path}.nutrition_range`, errors);
+  if (value.financial !== undefined) {
+    if (!isRecord(value.financial)
+        || !nonnegative(value.financial.unit_price)
+        || typeof value.financial.currency !== "string"
+        || !/^[A-Z]{3}$/.test(value.financial.currency)) {
+      errors.push(`${path}.financial must contain a nonnegative unit_price and uppercase currency`);
+    }
+  }
   if (!Array.isArray(value.assumptions) || !value.assumptions.every(nonemptyString)) {
     errors.push(`${path}.assumptions must be an array of strings`);
   }
@@ -151,7 +168,30 @@ function validateItem(value: unknown, index: number, errors: string[]): void {
       if (!SOURCE_TYPES.has(component.source_type)) errors.push(`${componentPath}.source_type is invalid`);
       requiredString(component.source_id, `${componentPath}.source_id`, errors);
       requiredString(component.source_name, `${componentPath}.source_name`, errors);
+      if (component.quantity_grams !== undefined && !positive(component.quantity_grams)) {
+        errors.push(`${componentPath}.quantity_grams must be positive`);
+      }
+      if (component.retrieved_at !== undefined && !validDateTime(component.retrieved_at)) {
+        errors.push(`${componentPath}.retrieved_at must be an ISO 8601 date-time`);
+      }
+      if (component.nutrient_values !== undefined) {
+        validateNutrients(component.nutrient_values, `${componentPath}.nutrient_values`, errors);
+      }
     });
+  }
+}
+
+function validateRanges(value: unknown, path: string, errors: string[]): void {
+  if (!isRecord(value)) {
+    errors.push(`${path} must be an object`);
+    return;
+  }
+  for (const [key, range] of Object.entries(value)) {
+    if (!CANONICAL_NUTRIENT_KEYS.includes(key as CanonicalNutrientKey)) {
+      errors.push(`${path}.${key} is not a canonical nutrient`);
+    } else if (!isRecord(range) || !nonnegative(range.min) || !nonnegative(range.max) || range.min > range.max) {
+      errors.push(`${path}.${key} must contain nonnegative min and max with min at most max`);
+    }
   }
 }
 
@@ -191,4 +231,8 @@ function positive(value: unknown): value is number {
 
 function unitInterval(value: unknown): value is number {
   return nonnegative(value) && value <= 1;
+}
+
+function validDateTime(value: unknown): value is string {
+  return typeof value === "string" && value.includes("T") && !Number.isNaN(Date.parse(value));
 }
