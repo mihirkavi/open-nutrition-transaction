@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "event_type": "purchase",
+  "event_id": "evt_restaurant_001",
+  "created_at": "2026-08-22T20:01:00Z",
+  "transaction": { "transaction_id": "txn_restaurant_001", "purchased_at": "2026-08-22T20:00:00Z", "currency": "USD", "channel": "pickup" },
+  "merchant": { "merchant_id": "restaurant_demo", "name": "Example Kitchen", "location": { "country": "US", "region": "CA" } },
+  "items": [{
+    "item_id": "line_burrito",
+    "name": "Chicken Burrito",
+    "quantity": { "count": 1 },
+    "identifiers": { "menu_item_id": "BURRITO-CHICKEN" },
+    "nutrition": { "basis": "purchased_quantity", "energy_kcal": 640, "protein_g": 32, "carbohydrate_g": 71, "fat_g": 25 },
+    "modifiers": [
+      { "type": "remove", "name": "cheese" },
+      { "type": "add", "name": "extra chicken", "nutrition_delta": { "energy_kcal": 120, "protein_g": 22 } }
+    ],
+    "provenance": { "source_type": "restaurant", "source_id": "recipe-v4", "source_name": "Example Kitchen", "method": "recipe_calculation", "calculated_at": "2026-08-01T00:00:00Z", "trust_level": "source_attributed" }
+  }],
+  "consumption_state": "purchased",
+  "provenance": { "generated_by": "Example POS", "trust_level": "source_attributed" }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mihirkavi/open-nutrition-transaction/blob/v1.0.0/schema/nutrition.schema.json",
+  "title": "OpenNutri Nutrition V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["basis"],
+  "properties": {
+    "basis": { "enum": ["per_item", "per_serving", "per_100g", "per_100ml", "purchased_quantity", "custom"] },
+    "serving_size": { "$ref": "#/$defs/measure" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "energy_kcal": { "$ref": "#/$defs/amount" },
+    "protein_g": { "$ref": "#/$defs/amount" },
+    "carbohydrate_g": { "$ref": "#/$defs/amount" },
+    "fat_g": { "$ref": "#/$defs/amount" },
+    "saturated_fat_g": { "$ref": "#/$defs/amount" },
+    "trans_fat_g": { "$ref": "#/$defs/amount" },
+    "fiber_g": { "$ref": "#/$defs/amount" },
+    "total_sugars_g": { "$ref": "#/$defs/amount" },
+    "added_sugars_g": { "$ref": "#/$defs/amount" },
+    "sodium_mg": { "$ref": "#/$defs/amount" },
+    "cholesterol_mg": { "$ref": "#/$defs/amount" },
+    "potassium_mg": { "$ref": "#/$defs/amount" },
+    "calcium_mg": { "$ref": "#/$defs/amount" },
+    "iron_mg": { "$ref": "#/$defs/amount" },
+    "vitamin_d_mcg": { "$ref": "#/$defs/amount" }
+  },
+  "$defs": {
+    "amount": { "type": "number", "minimum": 0 },
+    "measure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "unit"],
+      "properties": {
+        "amount": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

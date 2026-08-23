@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mihirkavi/open-nutrition-transaction/blob/v1.0.0/schema/transaction.schema.json",
+  "title": "OpenNutri Transaction V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["transaction_id"],
+  "properties": {
+    "transaction_id": { "type": "string", "minLength": 1 },
+    "purchased_at": { "type": "string", "format": "date-time" },
+    "timezone": { "type": "string", "minLength": 1 },
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+    "channel": { "enum": ["in_store", "delivery", "pickup", "drive_through", "online", "subscription", "other"] }
+  }
+}

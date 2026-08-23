@@ -1,24 +1,102 @@
 openapi: 3.1.0
 info:
-  title: Open Nutrition Transaction
-  version: 0.1.0
-  description: Vendor-neutral contract for provenance-aware nutrition attached to food purchases.
+  title: OpenNutri Exchange API
+  version: 1.0.0
+  description: Reference API for user-authorized delivery of narrowly scoped OpenNutri events.
   license:
     name: Apache-2.0
     identifier: Apache-2.0
+servers:
+  - url: https://api.example.com/opennutri
+security:
+  - oauth2: [events.read]
 paths:
-  /nutrition-transactions:
+  /v1/events:
+    get:
+      summary: List events authorized for the current user and client
+      operationId: listOpenNutriEvents
+      parameters:
+        - in: query
+          name: cursor
+          schema: { type: string }
+        - in: query
+          name: since
+          schema: { type: string, format: date-time }
+      responses:
+        "200":
+          description: Authorized events
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [events]
+                properties:
+                  events: { type: array, items: { $ref: ../schema/event.schema.json } }
+                  next_cursor: { type: [string, "null"] }
+        "401": { description: Missing or invalid access token }
+        "403": { description: Token lacks the required scope }
+  /v1/events/{event_id}:
+    get:
+      summary: Retrieve one authorized event
+      operationId: getOpenNutriEvent
+      parameters:
+        - in: path
+          name: event_id
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Event
+          content:
+            application/json:
+              schema: { $ref: ../schema/event.schema.json }
+        "404": { description: Event is absent or not authorized }
+  /v1/subscriptions:
     post:
-      summary: Accept a nutrition transaction
-      operationId: acceptNutritionTransaction
+      summary: Register a user-authorized webhook destination
+      operationId: createOpenNutriSubscription
+      security:
+        - oauth2: [subscriptions.write]
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: ../schemas/v0.1/nutrition-transaction.schema.json
+              type: object
+              additionalProperties: false
+              required: [destination_url, event_types]
+              properties:
+                destination_url: { type: string, format: uri }
+                event_types: { type: array, items: { type: string } }
       responses:
-        "202":
-          description: Transaction accepted
-        "400":
-          description: Invalid transaction
+        "201": { description: Subscription created }
+        "400": { description: Invalid destination or event selection }
+  /v1/subscriptions/{subscription_id}:
+    delete:
+      summary: Revoke future webhook delivery
+      operationId: revokeOpenNutriSubscription
+      security:
+        - oauth2: [subscriptions.write]
+      parameters:
+        - in: path
+          name: subscription_id
+          required: true
+          schema: { type: string }
+      responses:
+        "204": { description: Revoked }
+        "404": { description: Subscription not found }
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://provider.example/oauth/authorize
+          tokenUrl: https://provider.example/oauth/token
+          scopes:
+            events.read: Read authorized OpenNutri events
+            events.history: Read authorized historical events
+            nutrition.read: Read nutrition fields
+            item_identity.read: Read item identity and quantity
+            merchant.read: Read minimal merchant context
+            subscriptions.write: Create or revoke delivery subscriptions

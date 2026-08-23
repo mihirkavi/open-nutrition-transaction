@@ -1,4 +1,4 @@
-# Code of Conduct
+# OpenNutri Code of Conduct
 
 Be respectful, constructive, and focused on improving an interoperable nutrition
 format. Harassment, discrimination, threats, and publication of another person's

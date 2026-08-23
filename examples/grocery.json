@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "event_type": "purchase",
+  "event_id": "evt_grocery_001",
+  "created_at": "2026-08-22T18:31:00Z",
+  "transaction": {
+    "transaction_id": "txn_grocery_001",
+    "purchased_at": "2026-08-22T18:30:00Z",
+    "timezone": "America/Los_Angeles",
+    "currency": "USD",
+    "channel": "in_store"
+  },
+  "merchant": {
+    "merchant_id": "merchant_example_market",
+    "name": "Example Market",
+    "location_id": "store_042",
+    "location": { "country": "US", "region": "CA" }
+  },
+  "items": [{
+    "item_id": "line_1",
+    "name": "Plain Greek Yogurt",
+    "quantity": { "count": 1, "net_weight": { "amount": 32, "unit": "oz" } },
+    "identifiers": { "gtin": "00000000000000", "merchant_sku": "SKU-DEMO-1" },
+    "nutrition": {
+      "basis": "per_serving",
+      "serving_size": { "amount": 170, "unit": "g" },
+      "energy_kcal": 100,
+      "protein_g": 17,
+      "carbohydrate_g": 6,
+      "fat_g": 0
+    },
+    "allergens": ["milk"],
+    "provenance": {
+      "source_type": "manufacturer",
+      "source_id": "label-demo-2026",
+      "source_name": "Example Manufacturer",
+      "method": "official_label",
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null,
+      "trust_level": "source_attributed"
+    }
+  }],
+  "consumption_state": "purchased",
+  "provenance": { "generated_by": "Example Market export", "trust_level": "source_attributed" }
+}

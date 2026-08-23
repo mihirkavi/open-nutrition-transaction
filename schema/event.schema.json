@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mihirkavi/open-nutrition-transaction/blob/v1.0.0/schema/event.schema.json",
+  "title": "OpenNutri Event V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "event_type", "event_id", "created_at", "transaction", "merchant", "items", "consumption_state", "provenance"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "event_type": { "enum": ["purchase", "refund", "partial_refund", "correction", "cancellation", "nutrition_update"] },
+    "event_id": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "supersedes_event_id": { "type": "string", "minLength": 1 },
+    "transaction": { "$ref": "transaction.schema.json" },
+    "merchant": {
+      "type": "object", "additionalProperties": false, "required": ["name"],
+      "properties": {
+        "merchant_id": { "type": "string" }, "name": { "type": "string", "minLength": 1 }, "location_id": { "type": "string" },
+        "location": {
+          "type": "object", "additionalProperties": false, "required": ["country"],
+          "properties": { "country": { "type": "string", "pattern": "^[A-Z]{2}$" }, "region": { "type": "string" } }
+        }
+      }
+    },
+    "items": { "type": "array", "items": { "$ref": "item.schema.json" } },
+    "consumption_state": { "enum": ["purchased", "consumption_unknown", "allocated", "consumed", "partially_consumed", "discarded", "shared"] },
+    "provenance": {
+      "type": "object", "additionalProperties": false, "required": ["generated_by", "trust_level"],
+      "properties": { "generated_by": { "type": "string", "minLength": 1 }, "trust_level": { "enum": ["self_declared", "source_attributed", "verified"] } }
+    },
+    "signature": {
+      "type": "object", "additionalProperties": false, "required": ["algorithm", "key_id", "value", "signed_at"],
+      "properties": {
+        "algorithm": { "const": "Ed25519" }, "key_id": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 }, "signed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "allOf": [
+    { "if": { "properties": { "event_type": { "const": "purchase" } } }, "then": { "properties": { "items": { "minItems": 1 } } } },
+    { "if": { "properties": { "event_type": { "enum": ["correction", "nutrition_update"] } } }, "then": { "required": ["supersedes_event_id"] } }
+  ]
+}

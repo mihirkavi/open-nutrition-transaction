@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mihirkavi/open-nutrition-transaction/blob/v1.0.0/schema/provenance.schema.json",
+  "title": "OpenNutri Provenance V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source_type", "source_name", "trust_level"],
+  "properties": {
+    "source_type": { "enum": ["manufacturer", "retailer", "restaurant", "supplier", "laboratory", "government_database", "recipe_calculation", "application_estimate", "ai_estimate", "user_entered", "unknown"] },
+    "source_id": { "type": "string", "minLength": 1 },
+    "source_name": { "type": "string", "minLength": 1 },
+    "source_url": { "type": "string", "format": "uri" },
+    "method": { "type": "string", "minLength": 1 },
+    "calculated_at": { "type": "string", "format": "date-time" },
+    "valid_from": { "type": "string", "format": "date-time" },
+    "valid_until": { "type": ["string", "null"], "format": "date-time" },
+    "trust_level": { "enum": ["self_declared", "source_attributed", "verified"] }
+  }
+}

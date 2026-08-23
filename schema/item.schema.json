@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mihirkavi/open-nutrition-transaction/blob/v1.0.0/schema/item.schema.json",
+  "title": "OpenNutri Item V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["item_id", "name", "quantity", "nutrition", "provenance"],
+  "properties": {
+    "item_id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "anyOf": [{ "required": ["count"] }, { "required": ["amount", "unit"] }, { "required": ["net_weight"] }],
+      "properties": {
+        "count": { "type": "number", "exclusiveMinimum": 0 },
+        "amount": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "type": "string", "minLength": 1 },
+        "net_weight": { "$ref": "nutrition.schema.json#/$defs/measure" }
+      }
+    },
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gtin": { "type": "string" }, "upc": { "type": "string" }, "ean": { "type": "string" },
+        "plu": { "type": "string" }, "merchant_sku": { "type": "string" },
+        "menu_item_id": { "type": "string" }, "pos_item_id": { "type": "string" }
+      }
+    },
+    "nutrition": { "$ref": "nutrition.schema.json" },
+    "ingredients": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "allergens": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "modifiers": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["type", "name"],
+        "properties": {
+          "type": { "enum": ["add", "remove", "substitute", "size", "preparation", "topping", "sauce", "side"] },
+          "name": { "type": "string", "minLength": 1 },
+          "nutrition_delta": { "type": "object", "additionalProperties": { "type": "number" } }
+        }
+      }
+    },
+    "components": { "type": "array", "items": { "$ref": "item.schema.json" } },
+    "provenance": { "$ref": "provenance.schema.json" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "event_type": "correction",
+  "event_id": "evt_correction_001",
+  "created_at": "2026-08-22T21:05:00Z",
+  "supersedes_event_id": "evt_restaurant_001",
+  "transaction": { "transaction_id": "txn_restaurant_001", "currency": "USD", "channel": "pickup" },
+  "merchant": { "merchant_id": "restaurant_demo", "name": "Example Kitchen" },
+  "items": [{
+    "item_id": "line_burrito",
+    "name": "Chicken Burrito",
+    "quantity": { "count": 1 },
+    "nutrition": { "basis": "purchased_quantity", "energy_kcal": 620, "protein_g": 31, "carbohydrate_g": 69, "fat_g": 24 },
+    "provenance": { "source_type": "restaurant", "source_id": "recipe-v4-corrected", "source_name": "Example Kitchen", "method": "recipe_calculation", "calculated_at": "2026-08-22T21:04:00Z", "trust_level": "source_attributed" }
+  }],
+  "consumption_state": "purchased",
+  "provenance": { "generated_by": "Example POS", "trust_level": "source_attributed" }
+}

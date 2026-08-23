@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "event_type": "refund",
+  "event_id": "evt_refund_001",
+  "created_at": "2026-08-22T21:00:00Z",
+  "supersedes_event_id": "evt_grocery_001",
+  "transaction": { "transaction_id": "txn_grocery_001", "currency": "USD", "channel": "in_store" },
+  "merchant": { "merchant_id": "merchant_example_market", "name": "Example Market" },
+  "items": [],
+  "consumption_state": "purchased",
+  "provenance": { "generated_by": "Example Market export", "trust_level": "source_attributed" }
+}

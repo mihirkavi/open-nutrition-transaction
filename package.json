@@ -1,7 +1,7 @@
 {
-  "name": "open-nutrition-transaction",
-  "version": "0.1.2",
-  "description": "A small, vendor-neutral JSON contract for provenance-aware nutrition attached to food purchases.",
+  "name": "opennutri",
+  "version": "1.0.0",
+  "description": "An open standard for user-authorized, trustworthy nutrition portability.",
   "type": "module",
   "license": "Apache-2.0",
   "author": "Mihir Kavishwar",
@@ -16,6 +16,8 @@
   "keywords": [
     "food",
     "nutrition",
+    "nutrition-portability",
+    "opennutri",
     "open-standard",
     "provenance",
     "receipt",
@@ -23,10 +25,11 @@
   ],
   "files": [
     "dist",
-    "schemas",
+    "schema",
     "openapi",
     "examples",
     "README.md",
+    "NOTICE",
     "LICENSE"
   ],
   "exports": {
@@ -34,11 +37,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./schema/v0.1": "./schemas/v0.1/nutrition-transaction.schema.json"
+    "./schema/v1": "./schema/event.schema.json"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && node --test test/*.test.js",
+    "demo": "npm run build && node reference-server/server.js",
     "prepare": "npm run build"
   },
   "devDependencies": {
