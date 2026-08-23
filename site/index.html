@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OpenNutri is the open, user-controlled standard for nutrition attached to real-world food acquisition.">
+  <meta name="theme-color" content="#123f34">
+  <meta property="og:title" content="OpenNutri — Nutrition should travel with the food you buy">
+  <meta property="og:description" content="A common, open language connecting food acquisition with the nutrition and health ecosystem.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mihirkavi.github.io/open-nutrition-transaction/">
+  <meta property="og:image" content="https://mihirkavi.github.io/open-nutrition-transaction/assets/social-card.svg">
+  <link rel="canonical" href="https://mihirkavi.github.io/open-nutrition-transaction/">
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <title>OpenNutri — Open nutrition portability standard</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="OpenNutri home">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3a17 17 0 1 0 17 17"/><circle cx="20" cy="20" r="4.5"/><path d="M20 15.5V8M24 20h8M17 24l-5 5"/></svg>
+      <span>OpenNutri</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button><span class="sr-only">Toggle navigation</span><span></span><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+      <a href="#why">Why</a><a href="#standard">The standard</a><a href="#ecosystem">Who benefits</a><a href="#build">Build</a>
+      <a class="nav-cta" href="https://github.com/mihirkavi/open-nutrition-transaction">View on GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow"><span class="status-dot"></span> Open standard · V1 foundation</p>
+          <h1>Nutrition should travel with the food you buy.</h1>
+          <p class="hero-lede">OpenNutri is a common, open language for nutrition associated with real-world food acquisition—portable by people, understandable by systems, and verifiable at every step.</p>
+          <div class="hero-actions"><a class="button primary" href="#standard">Explore the standard <span aria-hidden="true">↓</span></a><a class="button secondary" href="#build">Start building</a></div>
+          <ul class="trust-list" aria-label="OpenNutri principles"><li>Vendor neutral</li><li>User controlled</li><li>Open source</li></ul>
+        </div>
+
+        <div class="hero-visual" aria-label="A food purchase becomes a narrow OpenNutri event that moves to a chosen application" data-reveal>
+          <span class="visual-label">Food purchase</span>
+          <article class="receipt-card">
+            <div class="receipt-top"><span class="mini-mark"></span><strong>Example Market</strong><span>10:42</span></div>
+            <div class="receipt-item"><span>Greek yogurt</span><strong>× 2</strong></div>
+            <div class="nutrient-strip"><span><strong>200</strong> kcal</span><span><strong>34g</strong> protein</span><span><strong>12g</strong> carbs</span></div>
+            <small>✓ Manufacturer label</small>
+          </article>
+          <div class="event-rail" aria-hidden="true"><i></i><i></i><i></i></div>
+          <article class="event-card">
+            <div><span>OPENNUTRI EVENT</span><b>Valid</b></div>
+            <pre><code>{
+  <em>"event_type"</em>: "purchase",
+  <em>"quantity"</em>: { "count": 2 },
+  <em>"nutrition"</em>: { ... },
+  <em>"consumption"</em>: "unknown"
+}</code></pre>
+          </article>
+          <div class="destinations"><span>Nutrition app</span><span>Dietitian</span><span>Research</span></div>
+          <p class="visual-caption">Only the nutrition fields a person authorizes move forward.</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="signal-band"><p><strong>Not another food database.</strong> The interoperability layer between food data, acquisition, and the tools people choose.</p></aside>
+
+    <section class="section intro" id="why">
+      <div class="section-heading" data-reveal><p class="kicker">The missing layer</p><h2>Food data tells us what something <em>is.</em><br>OpenNutri describes what was <em>acquired.</em></h2><p>Nutrition composition is abundant. The structured connection between a real purchase and a person’s chosen nutrition ecosystem is not.</p></div>
+      <div class="layer-story" data-reveal>
+        <article><span>01</span><small>Composition</small><h3>What nutrients are in this food?</h3><p>USDA, manufacturers, restaurants, and open food databases.</p></article>
+        <article class="active"><span>02</span><small>Acquisition</small><h3>What nutrition entered this food environment?</h3><p><strong>OpenNutri’s focus:</strong> identity, quantity, nutrients, context, permission, and provenance.</p></article>
+        <article><span>03</span><small>Consumption</small><h3>What did someone actually eat?</h3><p>User confirmation, nutrition apps, dietitians, and intelligent tools.</p></article>
+        <article><span>04</span><small>Interpretation</small><h3>What could it mean for health?</h3><p>Qualified professionals and health applications—not the standard.</p></article>
+      </div>
+      <aside class="truth-callout" data-reveal><span aria-hidden="true">≠</span><div><p class="kicker">A foundational truth</p><h3>Purchased does not mean consumed.</h3><p>OpenNutri preserves this distinction so downstream tools can make honest, transparent decisions instead of turning acquisition into a false health claim.</p></div></aside>
+    </section>
+
+    <section class="section standard" id="standard">
+      <div class="section-heading light" data-reveal><p class="kicker">Standard first</p><h2>One shared language.<br>Five interoperable layers.</h2><p>OpenNutri is a specification, not a centralized data owner. Each layer is useful on its own and stronger together.</p></div>
+      <div class="standard-grid">
+        <article class="standard-card featured" data-reveal><span>01</span><div><small>Semantic heart</small><h3>Data specification</h3><p>Defines food identity, explicit quantity, nutrient basis, merchant context, provenance, confidence, validity, and correction semantics.</p><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/spec/data.md">Read OpenNutri Data ↗</a></div></article>
+        <article class="standard-card" data-reveal><span>02</span><div><small>Machine readable</small><h3>Schemas & examples</h3><p>JSON Schema, OpenAPI, canonical units, enums, test vectors, and real grocery, restaurant, refund, correction, and signed events.</p></div></article>
+        <article class="standard-card" data-reveal><span>03</span><div><small>User controlled</small><h3>Exchange protocol</h3><p>Narrow scopes, consent, revocation, pull APIs, webhooks, signatures, retries, idempotency, and version negotiation.</p><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/spec/exchange.md">Read OpenNutri Exchange ↗</a></div></article>
+        <article class="standard-card" data-reveal><span>04</span><div><small>Easy to adopt</small><h3>Reference tools</h3><p>A validator, TypeScript package, Python and Swift starters, REST server, example payloads, and consent demonstrations.</p></div></article>
+        <article class="standard-card" data-reveal><span>05</span><div><small>Built to last</small><h3>Governance & conformance</h3><p>Compatibility rules, transparent proposals, conformance levels, versioned releases, and a path toward independent stewardship.</p></div></article>
+      </div>
+      <div class="complements" data-reveal><p>Designed to complement—not replace—</p><div><a href="https://www.gs1.org/standards/id-keys/gtin">GS1 / GTIN ↗</a><a href="https://fdc.nal.usda.gov/">USDA FoodData Central ↗</a><a href="https://world.openfoodfacts.org/">Open Food Facts ↗</a><a href="https://hl7.org/fhir/">HL7 FHIR ↗</a></div></div>
+    </section>
+
+    <section class="section privacy">
+      <div class="privacy-layout">
+        <div class="section-heading" data-reveal><p class="kicker">Narrow by design</p><h2>Move nutrition.<br>Not the shopping profile.</h2><p>A source authenticates its customer, controls its own infrastructure, and exports only the field categories that person approves.</p><a class="text-link" href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/spec/authorization.md">Explore authorization scopes →</a></div>
+        <div class="scope-panel" data-reveal>
+          <div class="scope-head"><div><span class="scope-app">ON</span><span>→</span><span class="scope-destination">Health app</span></div><b>One purchase</b></div>
+          <div class="scope-group yes"><p>Shared with permission</p><ul><li><span>✓</span> Food and item identity</li><li><span>✓</span> Quantity and nutrition</li><li><span>✓</span> Purchase time</li><li><span>✓</span> Minimal merchant context</li></ul></div>
+          <div class="scope-group no"><p>Outside OpenNutri Core</p><ul><li><span>×</span> Payment credentials</li><li><span>×</span> Delivery address</li><li><span>×</span> Browsing and ad profile</li><li><span>×</span> Unrelated purchases</li></ul></div>
+          <p class="scope-foot">Future access can be revoked. Price remains an optional, separately permissioned extension—not a core field.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ecosystem" id="ecosystem">
+      <div class="section-heading" data-reveal><p class="kicker">One standard, many paths</p><h2>Useful without forcing everyone into the same product.</h2><p>Participants do not all need direct relationships. They benefit from agreeing on what the data means, how it moves, and who controls it.</p></div>
+      <div class="benefit-grid">
+        <article data-reveal><span>01</span><h3>People</h3><p>Less manual logging. Nutrition can arrive as a reviewable record while the person controls source, destination, duration, and revocation.</p><small>Reconstruction → confirmation</small></article>
+        <article data-reveal><span>02</span><h3>Retailers & restaurants</h3><p>Build one narrow customer-controlled export instead of maintaining a custom connector for every nutrition or health service.</p><small>Build once → support many</small></article>
+        <article data-reveal><span>03</span><h3>Nutrition applications</h3><p>Receive structured candidate records and compete on experience, intelligence, coaching, and user trust.</p><small>Common plumbing → differentiated products</small></article>
+        <article data-reveal><span>04</span><h3>Dietitians & healthcare</h3><p>With explicit authorization, gain richer acquisition context without confusing a purchase with actual consumption.</p><small>Memory alone → structured context</small></article>
+        <article data-reveal><span>05</span><h3>Researchers & public health</h3><p>Use properly consented, de-identified, or aggregated data with consistent semantics across participating sources.</p><small>Fragmented sources → comparable evidence</small></article>
+        <article data-reveal><span>06</span><h3>Manufacturers & POS</h3><p>Supply authoritative nutrition upstream or make interoperable records available across many food businesses.</p><small>Data that stops → data that can travel</small></article>
+      </div>
+    </section>
+
+    <section class="section interoperability">
+      <div class="section-heading compact" data-reveal><p class="kicker">More than sending JSON</p><h2>Four kinds of interoperability.</h2></div>
+      <div class="interop-list" data-reveal><article><strong>Semantic</strong><p>Everyone agrees what quantity, nutrient basis, source, and purchase state mean.</p></article><article><strong>Technical</strong><p>Every compatible system can validate and parse the same machine-readable event.</p></article><article><strong>Organizational</strong><p>New partnerships begin with a shared model instead of months of basic mapping.</p></article><article><strong>Temporal</strong><p>Versioning, validity, and corrections keep records understandable over time.</p></article></div>
+    </section>
+
+    <section class="section build" id="build">
+      <div class="build-layout">
+        <div class="section-heading light" data-reveal><p class="kicker">For implementers</p><h2>A standard is only useful when it is easy to adopt.</h2><p>Start with a valid event in minutes. Then choose only the exchange capabilities your use case needs.</p>
+          <div class="resource-links"><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/docs/quick-start.md"><span>Quick start</span><small>Install and validate</small><b>→</b></a><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/schema/event.schema.json"><span>JSON Schema</span><small>Normative V1 contract</small><b>→</b></a><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/openapi/openapi.yaml"><span>OpenAPI</span><small>Reference exchange API</small><b>→</b></a><a href="https://github.com/mihirkavi/open-nutrition-transaction/tree/main/examples"><span>Examples</span><small>Canonical event vectors</small><b>→</b></a></div>
+        </div>
+        <div class="code-window" data-reveal><div class="code-topbar"><div><i></i><i></i><i></i></div><span>validate-event.ts</span><button type="button" data-copy-button aria-label="Copy TypeScript example">Copy</button></div><pre><code id="code-example"><b>import</b> {
+  OPENNUTRI_VERSION,
+  validateOpenNutriEvent,
+  <b>type</b> OpenNutriEvent,
+} <b>from</b> <em>"opennutri"</em>;
+
+<b>const</b> event: OpenNutriEvent = {
+  schema_version: OPENNUTRI_VERSION,
+  event_type: <em>"purchase"</em>,
+  event_id: <em>"evt_01"</em>,
+  <span>// identity, quantity, nutrition,</span>
+  <span>// provenance & permission context</span>
+  ...payload,
+};
+
+<b>const</b> result = validateOpenNutriEvent(event);
+<b>if</b> (!result.valid) <b>throw new</b> Error(result.errors);</code></pre><div class="code-status"><span>✓</span> Valid OpenNutri V1 event</div></div>
+      </div>
+      <div class="conformance" data-reveal><div><p class="kicker">Conformance</p><h3>Clear claims, earned progressively.</h3><p>Compatibility is claimed per implementation and version—not as a vague organization-wide badge.</p></div><div class="level-list"><article><span>CORE</span><h4>Valid data</h4><p>Schema-valid events, lineage, partial data, and purchase semantics.</p></article><article><span>COMPLETE</span><h4>Permissioned exchange</h4><p>Core plus scopes, revocation, idempotent delivery, and interoperability tests.</p></article><article><span>VERIFIED</span><h4>Cryptographic trust</h4><p>Complete plus signatures, key rotation, replay protection, and attribution.</p></article></div></div>
+    </section>
+
+    <section class="section adoption">
+      <div class="adoption-layout"><div class="section-heading" data-reveal><p class="kicker">Adoption without the cliff</p><h2>Start with the smallest useful export.</h2><p>A food business does not need to rebuild its infrastructure on day one. Every step can produce the same OpenNutri semantics.</p></div><ol data-reveal><li><span>1</span><div><strong>Download</strong><small>JSON or CSV</small></div></li><li><span>2</span><div><strong>Digital receipt</strong><small>Link or QR</small></div></li><li><span>3</span><div><strong>Connected API</strong><small>OAuth and pull</small></div></li><li><span>4</span><div><strong>Live exchange</strong><small>Webhooks and signatures</small></div></li></ol></div>
+    </section>
+
+    <section class="section mission">
+      <div class="mission-grid"><article data-reveal><p class="kicker">Mission</p><h2>Create a common, open language for food and nutrition data.</h2><p>So people, food businesses, healthcare providers, researchers, public institutions, and technology companies can use nutrition information more effectively—while preserving choice, privacy, provenance, and control.</p></article><article data-reveal><p class="kicker">Vision</p><h2>Nutrition information should not be trapped.</h2><p>Not inside labels, menus, receipts, retailer databases, or individual applications. It should be understandable, portable, verifiable, and reusable across the systems that help people eat, shop, research, and stay healthy.</p></article></div>
+      <blockquote data-reveal><p>“The producer should not need to know the eventual consumer. The shared language makes future uses possible.”</p><cite>OpenNutri design principle</cite></blockquote>
+    </section>
+
+    <section class="section faq">
+      <div class="section-heading compact" data-reveal><p class="kicker">Clear boundaries</p><h2>What OpenNutri is—and is not.</h2></div>
+      <div class="faq-list" data-reveal>
+        <details><summary>Is OpenNutri a nutrition database?</summary><p>No. It reuses product identity and composition sources such as GS1, USDA, manufacturer data, restaurant data, and Open Food Facts. A small reference dataset may support examples and research, but the standard does not aim to duplicate the world’s food databases.</p></details>
+        <details><summary>Does a purchase prove someone ate the food?</summary><p>No. OpenNutri standardizes acquisition events and preserves purchase-versus-consumption state. Nutrition applications or people may later confirm or correct consumption outside the merchant event.</p></details>
+        <details><summary>Does a retailer expose its customer database?</summary><p>No. The intended pattern is a narrow, retailer-controlled interface that exports only the authorized nutritional representation of the customer’s own food event.</p></details>
+        <details><summary>Is price part of the core standard?</summary><p>No. A future economics extension can define optional, separately authorized fields for questions such as nutrient density per dollar.</p></details>
+        <details><summary>Does OpenNutri make medical decisions?</summary><p>No. It provides structured, permissioned inputs. Clinical interpretation, diagnosis, treatment, and advice remain with qualified professionals and applications.</p></details>
+      </div>
+    </section>
+
+    <section class="final-cta"><div data-reveal><p class="kicker">Open infrastructure for a healthier information ecosystem</p><h2>Integrate once.<br>Let nutrition travel.</h2><p>OpenNutri is early, open, and ready for implementers who want to help shape a practical standard.</p><div class="hero-actions"><a class="button light-button" href="https://github.com/mihirkavi/open-nutrition-transaction">Explore the repository ↗</a><a class="button ghost" href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/CONTRIBUTING.md">Contribute</a></div></div><svg class="cta-mark" viewBox="0 0 260 260" aria-hidden="true"><path d="M130 15a115 115 0 1 0 115 115"/><circle cx="130" cy="130" r="28"/><path d="M130 102V50M158 130h52M110 150l-38 38"/></svg></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-brand"><a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3a17 17 0 1 0 17 17"/><circle cx="20" cy="20" r="4.5"/><path d="M20 15.5V8M24 20h8M17 24l-5 5"/></svg><span>OpenNutri</span></a><p>An open standard for user-authorized nutrition portability.</p></div><div class="footer-links"><div><strong>Standard</strong><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/spec/data.md">OpenNutri Data</a><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/spec/exchange.md">OpenNutri Exchange</a><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/spec/conformance.md">Conformance</a></div><div><strong>Build</strong><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/docs/quick-start.md">Quick start</a><a href="https://github.com/mihirkavi/open-nutrition-transaction/tree/main/sdk">SDKs</a><a href="https://github.com/mihirkavi/open-nutrition-transaction/tree/main/examples">Examples</a></div><div><strong>Project</strong><a href="https://github.com/mihirkavi/open-nutrition-transaction">GitHub</a><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/GOVERNANCE.md">Governance</a><a href="https://github.com/mihirkavi/open-nutrition-transaction/blob/main/LICENSE">Apache-2.0</a></div></div><p class="footer-note">OpenNutri is a technical interoperability project. It is not medical or legal advice. <span>© 2026 OpenNutri contributors.</span></p></footer>
+  <script src="script.js" defer></script>
+</body>
+</html>

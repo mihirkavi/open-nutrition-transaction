@@ -2,6 +2,8 @@
 
 **Take your nutrition wherever you choose.**
 
+[Visit the OpenNutri website](https://mihirkavi.github.io/open-nutrition-transaction/)
+
 OpenNutri is an open interoperability standard for user-authorized nutrition
 portability. It defines how food and nutrition information is represented, how
 its origin and trust level are recorded, and how a person can authorize that
