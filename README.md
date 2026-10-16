@@ -59,7 +59,11 @@ curl http://localhost:8787/health
 curl -H 'Authorization: Bearer demo-token' http://localhost:8787/v1/events
 ```
 
-SDK usage:
+`npm run demo` builds the TypeScript package and starts the dependency-free
+reference server on port 8787 (override with the `PORT` environment variable).
+
+SDK usage (the `opennutri` package is not yet published to npm; build it from this
+repository with `npm install`, which runs `npm run build` into `dist/`):
 
 ```ts
 import {
@@ -100,6 +104,7 @@ per serving, per 100 g, or the purchased quantity—so consumers do not need to 
 - [`demo/`](demo): merchant, consent, and receiving-app demonstrations
 - [`docs/`](docs): implementation guides, diagrams, and adoption roadmap
 - [`onips/`](onips): OpenNutri Improvement Proposal process
+- [`site/`](site): source of the GitHub Pages website
 
 ## Neutrality and scope
 
