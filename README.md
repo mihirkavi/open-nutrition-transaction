@@ -2,7 +2,7 @@
   <a href="https://mihirkavi.github.io/open-nutrition-transaction/">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.png">
-      <img alt="OpenNutri: nutrition should travel with your food. An open standard for moving the nutrition of food you buy, with your permission, to the apps you choose." src=".github/assets/banner-light.png" width="100%">
+      <img alt="OpenNutri: nutrition should travel with your food. A synthetic Example Market receipt for two Greek yogurts becomes a valid OpenNutri purchase event that can go to a nutrition app, a dietitian or research, with your permission." src=".github/assets/banner-light.png" width="100%">
     </picture>
   </a>
 </p>
@@ -22,10 +22,10 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-111111?style=flat-square"></a>
-  <img alt="Open standard: V1 foundation" src="https://img.shields.io/badge/open%20standard-V1%20foundation-111111?style=flat-square">
-  <img alt="Status: early, no production adopters yet" src="https://img.shields.io/badge/status-early-6b6b6b?style=flat-square">
-  <a href="https://github.com/mihirkavi/open-nutrition-transaction/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/mihirkavi/open-nutrition-transaction/ci.yml?branch=main&style=flat-square&color=111111&label=CI"></a>
+  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-123f34?style=flat-square"></a>
+  <img alt="Open standard: V1 foundation" src="https://img.shields.io/badge/open%20standard-V1%20foundation-2f8f67?style=flat-square">
+  <img alt="Status: early, no production adopters yet" src="https://img.shields.io/badge/status-early-f0a63a?style=flat-square">
+  <a href="https://github.com/mihirkavi/open-nutrition-transaction/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/mihirkavi/open-nutrition-transaction/ci.yml?branch=main&style=flat-square&color=123f34&label=CI"></a>
 </p>
 
 <p align="center">
