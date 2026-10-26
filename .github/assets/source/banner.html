@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OpenNutri banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=block" rel="stylesheet">
+<style>
+  /* Identity taken from the live site (site/styles.css): Inter 800 with tight tracking, Georgia italic accents,
+     forest green, lime, orange and paper; motif = the receipt that becomes a narrow OpenNutri event. */
+  :root {
+    --paper: #f7f4ec; --white: #fffef9; --ink: #10231f; --soft: #52675f; --green: #123f34; --deep: #082d26;
+    --leaf: #2f8f67; --mint: #b9e8cf; --lime: #d9f47b; --orange: #f0a63a; --line: rgba(16, 35, 31, .14);
+    --glow: rgba(185, 232, 207, .75); --ring: rgba(18, 63, 52, .12); --card: rgba(255, 254, 249, .96);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #082d26; --white: #0c332b; --ink: #f7f4ec; --soft: #b0ccc0; --leaf: #9fe0bd; --line: rgba(255, 255, 255, .14);
+      --glow: rgba(47, 143, 103, .45); --ring: rgba(217, 244, 123, .12); --card: #f7f4ec;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1600px; height: 600px; overflow: hidden; }
+  body {
+    position: relative; font-family: Inter, system-ui, sans-serif; color: var(--ink);
+    background: radial-gradient(circle at 80% 30%, var(--glow), transparent 34%),
+                radial-gradient(circle at 8% 92%, rgba(240, 166, 58, .16), transparent 24%), var(--paper);
+  }
+  body::before { /* the site's paper grain */
+    content: ""; position: absolute; inset: 0; opacity: .14; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+  }
+  .rings { position: absolute; width: 760px; height: 760px; right: -250px; top: -300px; border: 1px solid var(--ring); border-radius: 50%;
+    box-shadow: 0 0 0 60px rgba(18, 63, 52, .025), 0 0 0 130px rgba(18, 63, 52, .02); }
+  .copy { position: absolute; left: 92px; top: 92px; width: 860px; }
+  .brand { display: flex; align-items: center; gap: 14px; font-weight: 800; font-size: 30px; letter-spacing: -.03em; color: var(--ink); }
+  .brand svg { width: 52px; height: 52px; border-radius: 15px; }
+  @media (prefers-color-scheme: dark) { .brand svg { box-shadow: 0 0 0 1.5px rgba(217, 244, 123, .45); } }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; padding: 9px 15px; border: 1px solid var(--line);
+    border-radius: 99px; background: rgba(255, 255, 255, .5); font-size: 14px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--leaf); }
+  @media (prefers-color-scheme: dark) { .eyebrow { background: rgba(255, 255, 255, .05); } }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--leaf); box-shadow: 0 0 0 4px rgba(47, 143, 103, .18); }
+  h1 { margin-top: 28px; font-size: 76px; font-weight: 800; line-height: .96; letter-spacing: -.062em; }
+  h1 em { font-family: Georgia, "Times New Roman", serif; font-weight: 500; letter-spacing: -.035em; color: var(--leaf); }
+  .sub { margin-top: 26px; font-size: 23px; line-height: 1.5; color: var(--soft); max-width: 680px; letter-spacing: -.01em; }
+
+  .receipt, .event { position: absolute; border-radius: 24px; box-shadow: 0 24px 70px rgba(9, 45, 38, .18); }
+  .receipt { left: 920px; top: 46px; width: 340px; padding: 22px 24px; background: var(--card); color: #10231f; border: 1px solid rgba(18, 63, 52, .12); transform: rotate(-2.6deg); }
+  .r-top { display: flex; align-items: center; gap: 9px; padding-bottom: 16px; border-bottom: 1px dashed rgba(16, 35, 31, .22); font-size: 15px; }
+  .r-top span:last-child { margin-left: auto; color: #798b85; }
+  .mini { width: 20px; height: 20px; border-radius: 50%; background: #d9f47b; border: 5px solid #123f34; }
+  .r-item { display: flex; justify-content: space-between; padding: 18px 0 12px; font-size: 18px; }
+  .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 13px; background: #eef6ed; border-radius: 13px; }
+  .strip span { display: flex; flex-direction: column; font-size: 12px; color: #557068; line-height: 1.3; }
+  .strip strong { font-size: 20px; color: #082d26; }
+  .receipt small { display: block; margin-top: 12px; font-size: 13px; color: #62776f; }
+  .rail { position: absolute; left: 1120px; top: 300px; width: 210px; height: 2px; background: var(--orange); transform: rotate(18deg); transform-origin: left; }
+  .rail i { position: absolute; top: -5px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--leaf); }
+  .rail i:nth-child(2) { left: 50%; } .rail i:last-child { right: 0; border-color: var(--orange); }
+  .event { left: 1120px; top: 296px; width: 390px; padding: 22px 24px; background: #0c332b; color: #dff5e8; border: 1px solid rgba(217, 244, 123, .18); transform: rotate(1.6deg); }
+  @media (prefers-color-scheme: dark) { .event { background: #04201a; } }
+  .e-top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 800; letter-spacing: .12em; color: #9ec9b5; }
+  .e-top b { padding: 4px 10px; border-radius: 99px; background: #d9f47b; color: #082d26; letter-spacing: .06em; }
+  pre { margin-top: 10px; font: 600 14.5px/1.6 "JetBrains Mono", ui-monospace, monospace; }
+  pre em { font-style: normal; color: #b7e5cd; }
+  .dest { position: absolute; left: 1128px; top: 548px; display: flex; gap: 8px; }
+  .dest span { padding: 7px 12px; border-radius: 99px; border: 1px solid var(--line); font-size: 13px; font-weight: 700; color: var(--soft); background: rgba(255, 255, 255, .45); }
+  @media (prefers-color-scheme: dark) { .dest span { background: rgba(255, 255, 255, .06); } }
+</style>
+</head>
+<body>
+  <div class="rings"></div>
+  <section class="copy">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="17" fill="#123f34"/><path d="M32 11a21 21 0 1 0 21 21" fill="none" stroke="#f7f4ec" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="32" r="6" fill="#d9f47b" stroke="#f7f4ec" stroke-width="3"/><path d="M32 26V17M38 32h9M28 36l-7 7" fill="none" stroke="#f7f4ec" stroke-width="3" stroke-linecap="round"/></svg>
+      OpenNutri
+    </div>
+    <div class="eyebrow"><span class="dot"></span>Open standard · V1 foundation</div>
+    <h1>Nutrition should travel<br><em>with your food.</em></h1>
+    <p class="sub">A store sends the nutrition of your purchase, and nothing else, to the app you choose. With your permission.</p>
+  </section>
+  <article class="receipt">
+    <div class="r-top"><span class="mini"></span><strong>Example Market</strong><span>10:42</span></div>
+    <div class="r-item"><span>Greek yogurt</span><strong>× 2</strong></div>
+    <div class="strip"><span><strong>200</strong>kcal</span><span><strong>34g</strong>protein</span><span><strong>12g</strong>carbs</span></div>
+    <small>✓ Manufacturer label · synthetic example</small>
+  </article>
+  <article class="event">
+    <div class="e-top"><span>OPENNUTRI EVENT</span><b>VALID</b></div>
+<pre>{
+  <em>"event_type"</em>: "purchase",
+  <em>"quantity"</em>: { "count": 2 },
+  <em>"nutrition"</em>: { … },
+  <em>"consumption"</em>: "unknown"
+}</pre>
+  </article>
+  <div class="dest"><span>Nutrition app</span><span>Dietitian</span><span>Research</span></div>
+</body>
+</html>
